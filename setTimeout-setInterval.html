@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>setTimeout and setInterval</title>
+</head>
+<body>
+  <pre>
+    <h3>Métodos setTimeout y setInterval</h3>
+    <sup><a href="https://www.youtube.com/watch?v=qu7zC7li64U">https://www.youtube.com/watch?v=qu7zC7li64U</a></sup>
+    <strong>*[setTimeout]:</strong> Llama a una función o evalúa una expresión (fragmento de código)
+    <b>"después de un intervalo de tiempo"</b> específicado en milisegundos (solo se ejecuta 1 vez)
+    <br>
+    <strong>*[setInterval]:</strong> Llama a un función o evalúa una expresión (fragmento de código)
+    <b>"cada intervalo de tiempo"</b> específicado en milisegundos
+  </pre>
+  <hr>
+  <!-- setTimeout -->
+  <!-- Lo comenté para ejecutar el clearTimeout -->
+  <!-- <span id="loading">Loading...</span> -->
+  <span id="loading">Completed</span>
+  <hr>
+  <!-- setInterval -->
+  <span id="blink">Infantito</span>
+  <script>
+  (() => {
+    'use strict';
+
+    /* [setTimeout] */
+    let loadingText = document.querySelector('#loading');
+    let timer_setTimeout = setTimeout(() => {
+      console.log('Executing setTimeout...');
+
+      loadingText.innerText = 'Completed';
+    }, 5000); // 5 seconds
+    // Cancelar setTimeout
+    if (loadingText.innerText === 'Completed') {
+      console.info('setTimeout Cancelado...');
+      clearTimeout(timer_setTimeout);
+    }
+
+    /* [setInterval] */
+    let blinkText = document.querySelector('#blink');
+    let i = 0;
+
+    blinkText.style.opacity = 1;
+
+    let timer_setInterval = setInterval(() => {
+      blinkText.style.opacity = Number(blinkText.style.opacity) === 1 ? 0 : 1;
+
+      console.info(`blink ${i}`)
+
+      if (i === 5) {
+        clearInterval(timer_setInterval);
+      }
+
+      i++;
+      // Cancelar setInterval
+    }, 1000); // 1 segundo
+  })();
+  </script>
+</body>
+</html>
