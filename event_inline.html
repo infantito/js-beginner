@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Ejemplo aprenderaprogramar.com</title>
+		<style rel="stylesheet" type="text/css">
+			* {
+				font-family: sans-serif;
+			}
+
+			div {
+				margin: 20px;
+				padding: 20px;
+				background-color: yellow;
+				border-style: solid;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Cursos aprendeaprogramar.com</h2>
+		<h3>Ejemplos JavaScript</h3>
+		<div class="externo" onclick="return sayHello(event, this);">Soy el div externo: <a href="http://aprenderaprogramar.com">Aquí un link</a>
+			<div class="intermedio" onclick="return sayHello(event, this);">Soy el div intermedio: <a href="http://aprenderaprogramar.es">Aquí un link</a>
+				<div class="interno" onclick="return sayHello(event, this);">Soy el div interno: <a href="http://aprendeaprogramar.es">Aquí un link</a></div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function sayHello(evt, that) {
+				alert(`Hello I'm ${that.parentNode.className}`);
+				return false;
+			}
+		</script>
+	</body>
+</html>
