@@ -1,0 +1,12 @@
+<script>
+	// https://pbs.twimg.com/media/Ct-6J4jXEAEd1I9.jpg:large
+	console.warn((new Date()).toLocaleString('en', {month: 'long', day: 'numeric', year: 'numeric'}));
+	console.warn((new Date()).toLocaleString('es', {month: 'long', day: 'numeric', year: 'numeric'}));
+
+	// https://pbs.twimg.com/media/CmoKS0JVUAA8sEI.jpg
+	const amount = 1034532;
+	const options = { style: 'currency', currency: 'CAD' };
+
+	console.info('USA: ', amount.toLocaleString('en-US', options));
+	console.info('Germany: ', amount.toLocaleString('de-DE', options));
+</script>
