@@ -1,0 +1,14 @@
+# Logs
+log
+*.log
+npm-debug.log
+
+# OS generated files
+.DS_Store
+._.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Dependency directory
+node_modules
