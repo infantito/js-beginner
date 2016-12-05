@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bind()</title>
+</head>
+<body>
+	<pre>
+		¿Qué hace el método <strong>bind()</strong>?
+		El método bind() crea una nueva función que cuando
+		se manda a llamar tiene contexto/scope <strong>"this"</strong>
+		asignado por nosotros.
+    [https://www.youtube.com/watch?v=AjQsp-RpQ6o&list=PLeWI3XlFEVOWCfGbibNu7a6q3nhpnMW5t&index=3]
+  </pre>
+	<script>
+    var x = 9;
+
+		var module = {
+      x: 85,
+      // No usar arrow function [()=>{...}] porque por defecto
+      // este vincula contextualmente con el valor de "this".
+      // NO USAR PORQUE NO SALDRÁ EL EJEMPLO
+      getX: function() {
+        return this.x;
+      },
+      getXArrowFunction: ()=>{
+        return this.x;
+      }
+		};
+
+    console.log(`anonymous function: ${module.getX()}`); // 85
+    console.log(`arrow function: ${module.getXArrowFunction()}`); // 9
+
+    var retrieveX = module.getX;
+
+    // 9
+    console.log(`Sin bind(), asignando a una variable para cambiar el contexto: ${retrieveX()}`);
+
+    var context = {
+      x: 55
+    };
+
+    var bindGetX = retrieveX.bind(context);
+    console.log(`Con bind(): ${bindGetX()}`); // 55
+    console.log(`Con call(): ${retrieveX.call(context)}`); // 55
+
+    /* ----------------------------------------------------------- */
+    var fullname = 'Dante';
+
+    var person = {
+      other: {
+        fullname: 'Infantito'
+      },
+      fullname: 'Daniel',
+      getFullName: function() {
+        return this.fullname;
+      }
+    };
+
+    console.log(person.getFullName()); // Daniel
+
+    var getFullName = person.getFullName;
+    console.log(getFullName()); // Dante
+    console.log(getFullName.bind(person.other)()); // Infantito
+	</script>
+</body>
+</html>
