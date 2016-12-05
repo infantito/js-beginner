@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Valores truthy & falsy</title>
+</head>
+<body>
+  <pre>
+    <sup><a href="https://www.youtube.com/watch?v=nesy5AlG8_g">[https://www.youtube.com/watch?v=nesy5AlG8_g]</a></sup>
+    <hr>
+    Estos valores son truthy:
+      true
+      'false'
+      {}
+      []
+      'string'
+      3.14
+      new Date()
+
+    Estos valores son falsy:
+    false
+    0 (zero)
+    ''
+    null
+    undefined
+    NaN (Not-a-Number)
+  </pre>
+  <script>
+    let a = !!(0); // false
+    let b = !!('0'); // true
+    let c = (false == 0); // true
+    let d = (false == ''); // true
+    let e = (0 == ''); // true
+
+    // Los valores falsy null y undefined no son equivalentes a nada, excepto a si mismos:
+    let f = (null == false);  // false
+    let g = (null == null);  // true
+    let h = (undefined == undefined);  // true
+    let i = (undefined == null);  // true
+
+    // El valor falsy NaN no es equivalente a nada - incluyendo el mismo NaN!
+    var j = (NaN == null); // false
+    var k = (NaN == NaN); // false
+
+    // Validaciones estrictas
+    var l = (false == 0); // true
+    var m = (false === 0); // false
+
+    function isTruthyOrFalsy(value) {
+      console.log(`${value ? 'Truthy' : 'Falsy'}`);
+    };
+
+    // Truthy values
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy(true);
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy('false');
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy({});
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy([]);
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy('some string');
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy(3.14);
+
+    // Outputs: "Truthy!"
+    isTruthyOrFalsy(new Date());
+
+    // Falsy values"
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy(false);
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy(null);
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy(undefined);
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy(NaN);
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy(0);
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy('');
+
+    // Outputs: "Falsy!"
+    isTruthyOrFalsy();
+  </script>
+</body>
+</html>
