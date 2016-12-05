@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ejemplo aprenderaprogramar.com</title>
+		<style type="text/css">
+			* {
+				font-family: sans-serif;
+			}
+
+			div {
+				margin: 20px;
+				padding: 20px;
+				background-color: yellow;
+				border-style: solid;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Cursos aprenderaprogramar.com</h2>
+		<h2>[http://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=872:ique-significa-javascript-void0-en-href-ique-diferencia-return-false-y-preventdefault-ejemplos-cu01184e&catid=78:tutorial-basico-programador-web-javascript-desde-&Itemid=206]</h2>
+		<h3>Ejemplos JavaScript</h3>
+		<div class="externo">Soy el div externo:
+			<div class="intermedio">Soy el div intermedio:
+				<div class="interno">Soy el div interno</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = ()=>{
+				let elemsDiv = document.querySelectorAll('div');
+				console.info('elemsDiv=>', elemsDiv);
+				for (let i = 0; i < elemsDiv.length; i++) {
+					elemsDiv[i].addEventListener('click', sayHello);
+				}
+
+				function sayHello(evt) {
+					alert(`Hello, I\'m the ${this.className}`);
+						evt.stopPropagation();
+				}
+			}
+		</script>
+	</body>
+</html>

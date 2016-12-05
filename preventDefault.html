@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Evitar la acción por defecto [preventDefault()]</title>
+		<style rel="stylesheet" type="text/css">
+			* {
+				font-family: sans-serif;
+			}
+
+			div {
+				margin: 20px;
+				padding: 20px;
+				background-color: yellow;
+				border-style: solid;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Cursos aprendeaprogramar.com</h2>
+		<h3>Ejemplos JavaScript</h3>
+		<div class="externo">Soy el div externo: <a href="http://aprenderaprogramar.com">Aquí un link</a>
+			<div class="intermedio">Soy el div intermedio: <a href="http://aprenderaprogramar.es">Aquí un link</a>
+				<div class="interno">Soy el div interno: <a href="http://aprendeaprogramar.es">Aquí un link</a></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+				let elemsLink = document.querySelectorAll('div a');
+				let elemsDiv = document.querySelectorAll('div');
+
+				for (let i=0; i<elemsLink.length; i++) {
+					elemsLink[i].addEventListener('click', decirHola);
+					elemsDiv[i].addEventListener('click', decirHola);
+				}
+			}
+
+			function decirHola(evt) {
+				debugger;
+				evt.preventDefault();
+				// parentNode => nodo padre de quién se dió click
+				alert(`Hello I'm the ${this.parentNode.className}`);
+				evt.stopPropagation();
+			}
+		</script>
+	</body>
+</html>
