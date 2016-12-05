@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JavaScript void()</title>
+</head>
+<body>
+	<!-- La buena práctica es no usar el link(<a>) para este tipo de casos,
+			 lo mejor sería crear otra etiqueta y darle estilo para que se asimile
+			 como un enlace (Consejo: <span> (Darle estilo css))
+	 -->
+	<h2>Cursos aprenderaprogramar.com</h2><h3>Ejemplos JavaScript</h3>
+	<a href="javascript:mostrarMensaje();">Pulsa aquí, por favor [mostrarMensaje()]</a>
+	<br>
+	<a href="#" onclick="mostrarMensaje();">Pulsa aquí, por favor [mostrarMensaje() - onclick]</a>
+	<br>
+	<a href="javascript://">Pulsa aquí, por favor [//]</a>
+	<br>
+	<a href="javascript:void(0)">Pulsa aquí, por favor [void(0)]</a>
+	<br>
+	<a href="javascript:void(document.body.style.backgroundColor='yellow');">Pulsa aquí para cambiar a color de fondo amarillo</a>
+	<script>
+		function mostrarMensaje() {
+			alert('Aham, lo que parecía un link en realidad lo que está haciendo es ejecutar una función javascript.');
+		}
+	</script>
+</body>
+</html>
