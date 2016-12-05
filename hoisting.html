@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hoisting</title>
+</head>
+<body>
+	<pre>
+		<strong>Hoisting</strong>
+		Comportamiento por defecto de JavaScript de mover
+		todas las declaraciones al inicio de cada Scope
+		<hr>
+		Open DevTool [F12]
+		(https://www.youtube.com/watch?v=81lW_glmIsM&list=PLeWI3XlFEVOWCfGbibNu7a6q3nhpnMW5t&index=1)
+	</pre>
+	<script>
+		// (() => {
+		// 	'use strict';
+
+		// 	var result = 0;
+
+		// 	var sum = (n1, n2) => {
+		// 		console.log(result);
+		// 		result = n1 + n2;
+
+		// 		return result;
+		// 	};
+
+		// 	sum(2, 2);
+
+		// 	console.log(result);
+		// })();
+
+		(() => {
+			'use strict';
+
+			var result;
+			result = 0;
+
+			var sum = (n1, n2) => {
+				var result;
+				console.log(result);
+				result = n1 + n2;
+
+				return result;
+			};
+
+			sum(2, 2);
+			// Coge el scope de la función principal
+			console.log(result);
+		})();
+	</script>
+</body>
+</html>
