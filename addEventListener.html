@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>addEventListener - useCapture</title>
+	<style type="text/css">
+		* {
+			user-select: none;
+		}
+	</style>
+</head>
+<body>
+	<pre>
+		<strong>[ie8 Support]</strong> http://stackoverflow.com/questions/9769868/addeventlistener-not-working-in-ie8&nbsp;
+		if (element.addEventListener) {
+		  element.addEventListener("click", function, false);
+		} else {
+		  element.attachEvent("onclick", function);
+		}
+		<strong>Polyfill</strong>[https://gist.github.com/jonathantneal/3748027]
+		<br>
+		O se puede hacer un polyfill para ie8
+		<hr>
+		Events can be activated at two occasions: At the beginning ("capture"),&nbsp;
+		and at the end ("bubble"). Events are executed in the order of how they're&nbsp;
+		defined. Say, you define 4 event listeners:
+		<br>
+		window.addEventListener('click', () => console.log('Click One'), false);
+		window.addEventListener('click', () => console.log('Click Two'), true);
+		window.addEventListener('click', () => console.log('Cick Three'), false);
+		window.addEventListener('click', () => console.log('Cick Four'), true);
+		<br>
+		2 (defined first, using capture=true)
+		4 (defined second using capture=true)
+		1 (first defined event with capture=false)
+		3 (second defined event with capture=false)
+		<br><hr>
+		<strong>tipo</strong>
+		Una cadena representando el  tipo de evento a escuchar.
+		<strong>listener</strong>
+		El objeto que recibe una notificación cuando un evento de el tipo especificado ocurre.&nbsp;
+		Debe ser un objeto implementando la interfaz EventListener o solo una function en JavaScript.
+		<strong>useCapture</strong><sup>Optional</sup>
+		Si es true, useCapture indica que el usuario desea iniciar la captura.&nbsp;
+		Después de iniciar la captura, todos los eventos del tipo especificado serán lanzados&nbsp;
+		al listener registrado antes de comenzar  a ser controlados por algún EventTarget que esté&nbsp;
+		por debajo en el arbol DOM del documento.
+		<br><hr>
+		El useCapture es más por el tema de bubbling&nbsp;
+		[Para más detalles, ver <a href="./stopPropagation.html">stopPropagation.html</a>]&nbsp;
+		para ver el tema de bubbling
+	</pre>
+	<a href="http://stackoverflow.com/questions/7398290/unable-to-understand-usecapture-attribute-in-addeventlistener" target="_blank">
+		stackoverflow.com/questions/7398290/unable-to-understand-usecapture-attribute-in-addeventlistener
+	</a>
+	<script>
+		window.addEventListener('click', () => console.log('Click One'), false);
+		window.addEventListener('click', () => console.log('Click Two'), true);
+		window.addEventListener('click', () => console.log('Cick Three'), false);
+		window.addEventListener('click', () => console.log('Cick Four'), true);
+	</script>
+</body>
+</html>
