@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Closures</title>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Closures</h1>
+    <pre>
+      Son <b>funciones que se encuentran dentro de otra función</b> y que
+      estas <b>hacen uso de las variables que se encuentran en su
+      entorno de desarrollo</b> (en la función donde fue creada).
+    </pre><sup>https://www.youtube.com/watch?v=qsJfHnK39Hc</sup>
+  </div>
+  <script type="text/javascript">
+    // Closures
+    // With Module Pattern
+    var start = function() {
+      // Private Property
+      var value = 0;
+
+      // Privaye Method
+      function changeValue(num) {
+        value += num;
+      }
+
+      // Properties and Methods Publics
+      return {
+        increment: function() {
+          changeValue(3);
+        },
+        decrease: function() {
+          changeValue(-3);
+        },
+        showValue: function() {
+          return value;
+        }
+      }
+    };
+
+    var init = start();
+
+    init.increment();
+    init.increment();
+
+    document.write(init.showValue());
+
+    // init.decrease();
+
+    /*function operation() {
+      // variable local
+      var value = 0;
+
+      var increment = function() {
+        return value += 3;
+      }
+
+      return increment;
+    };
+
+    var execute = operation();
+
+    document.write(`${execute()} <br>`); // 3
+    document.write(`${execute()} <br>`); // 6
+    document.write(execute()); // 9*/
+  </script>
+</body>
+</html>
