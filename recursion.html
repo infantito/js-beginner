@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Recursion Functions</title>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Recursion</h1>
+    <pre>
+      <b>Una función que se llama así misma es llamada recursiva.</b>
+
+      La función se llama así misma múltiples veces con diferentes argumentos,
+      por ejemplo podríamos lograr una multiplicación repetidas veces con una
+      función recursiva. Las funciones recursivas son más lentas que una
+      versión de loop.
+
+      Algunos problemas se resuelven con recursividad que con loops.
+    </pre>
+  </div>
+  <script type="text/javascript">
+    // Recursividad
+    // Example 01
+    function power(base, exponent) {
+      return (!exponent ? 1 : (base * power(base, exponent - 1)));
+    }
+
+    console.info(power(2, 3)); // 8
+    document.write(power(2, 3)); // 8
+
+    // Example 02
+    var content = [];
+    var min = 20;
+    var max = 50;
+
+    var aleatory = () => {
+      // Generate aleatory number
+      var num = Math.floor(Math.random() * max - min + 1);
+
+      if (content.length < 20) {
+        content.push(num);
+
+        aleatory();
+      }
+    }
+
+    console.info(aleatory());
+    document.write(`<br>${content}`);
+  </script>
+</body>
+</html>
