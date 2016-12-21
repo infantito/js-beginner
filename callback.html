@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Callback Functions</title>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Callback</h1>
+    <pre>
+      <b>Callback: (Llamada de vuelta)</b> Se trata de una función que es pasada como parámetro
+      de otra función desde la cual es ejecutada.
+
+      De esta forma creamos funciones nombradas fuera de la llamada y estas a su vez podrian
+      disparar otros eventos (con collbacks) tambien.
+
+      Por último y no menos importante, los callbacks No son asincrónicos, es decir, dispara
+      el callback y cuando termina la ejecución de esa función de callback continua desde donde lo disparó.
+
+      *[<b>La idea es disparar eventos en las funciones que llamaron “avisando” que esta sucendiendo</b>]
+    </pre>
+  </div>
+  <script type="text/javascript">
+    // Example 01
+    var start = (value, callback) => {
+      if (typeof callback === 'function') {
+        callback(value);
+      } else {
+        console.log(value);
+      }
+    }
+
+    start('infantito', value => console.log(`Welcome ${value}`));
+    start('infantito', 'value => console.log(`Welcome ${value}`)');
+
+    // Example 02
+    var greet = (name, callback) => {
+      var greeting = `Hello ${name}`;
+      callback(greeting);
+    };
+
+    var getGreeting = (salute) => {
+      console.log(salute);
+    };
+
+    greet('infantito', getGreeting);
+  </script>
+</body>
+</html>
