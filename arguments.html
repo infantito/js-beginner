@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Arguments Object</title>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Arguments</h1>
+    <pre>
+      Es un tipo especial de datos que se genera en el interior de cada función
+      recogiendo todos los parámetros (argumentos) que se han enviado a la misma.
+      <hr>
+        <sup>
+          El objeto arguments no es un Array. Es similar a un Array, pero no tiene
+          ninguna propiedad Array excepto length. Por ejemplo, no tiene el método pop.
+          Sin embargo este puede ser convertido a un Array real.
+          <b>Los arrow functions no exponen un objeto arguments [() =>]</b>
+        </sup>
+      <hr>
+      <b>Particularidad del objeto arguments:</b>
+        [*]El objeto arguments no se crea si ya exite un parámentro formal con este nombre o
+        si hemos declarado una variable homónima en el interior de la función
+    </pre>
+  </div>
+  <script type="text/javascript">
+    // [*]Particularidad
+    function test( a, arguments ){
+     return arguments;
+    }
+    console.log( test( 1 ) ); // undefined
+    console.log( test( 1, 5 ) ); // 5
+
+    // [*]Particularidad
+    // function test( a, b ){
+    //  var arguments = 'foo';
+    //  return arguments;
+    // }
+    // console.log( test( 1, 2 ) );  // foo
+
+    /*---------------------------------------------*/
+
+    var add = function(n1, n2) {
+      /*
+        arguments[0] = 10;
+        arguments[1] = 5;
+        arguments[2] = 7;
+        arguments[3] = 9;
+        arguments[4] = 20;
+      */
+      console.log(`*Total arguments: ${arguments.length}`);
+      return n1 + n2;
+    };
+
+    console.log(`*arguments.length = 2 => ${add(10, 5)}`);
+    console.log(`*arguments.length = 5 => ${add(10, 5, 7, 9, 20)}`);
+  </script>
+</body>
+</html>
