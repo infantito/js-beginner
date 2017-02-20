@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Event order</title>
+</head>
+<body>
+  <pre>
+    <strong>Event order | Bubling && Capturing</strong>
+    What is an Event ?
+    => JavaScript's interaction with HTML is handled through events that occur <b>when the user or the browser manipulates a page</b>.
+    => An event is a signal from the browser that something has happened.
+
+    Not surprisingly, back in the bad old days Netscape and Microsoft came to different conclusions.
+
+    * Netscape said that the event on element1 takes place first. This is called event capturing.
+    * Microsoft maintained that the event on element2 takes precedence. This is called event bubbling.
+    [http://www.quirksmode.org/js/events_order.html]
+    [https://janzaldo.wordpress.com/2010/08/30/eventos_html/]
+
+    <b>Event capturing: </b>When you use event capturing
+    <b>Event bubbling: </b>When you use event bubbling
+  </pre>
+  <p>Existen 3 API´s para controlar eventos:<br>
+    <strong><em>La original de Netscape</em></strong> que soportan todos los navegadores,&nbsp;
+    la cual es la que se agrega como atributo de un elemento (como el onclick)&nbsp;
+    y solo se le asigna una función.<br>
+    <strong><em>La&nbsp; de Microsoft </em></strong>la cual tiene un método llamado attachEvent.<br>
+    <em><strong>La del W3C </strong></em>que es la que se usa el método addEventListener y agrega un parámetro extra el cual generalmente se especifica como falso (false).
+  </p>
+  <hr>
+  <section style="border: 2px solid #000;text-align: center;">
+    <h2>Introduction</h2>
+    <p>Lorem ipsum dolor sit amet</p>
+  </section>
+  <article style="border: 2px solid #000;text-align: center;">
+    <h2>Introduction</h2>
+    <p>Lorem ipsum dolor sit amet</p>
+  </article>
+  <hr>
+  <script type="text/javascript">
+    (() => {
+      'use strict';
+
+      // Topic Bubling => h2 fires first, then section fires last
+      document.querySelector('section').addEventListener('click', () => console.log('Bubbling: section'));
+      document.querySelector('section h2').addEventListener('click', () => console.log('Bubbling: h2'));
+
+      // Topic Capturing => article fires first, then h2 fires last
+      document.querySelector('article').addEventListener('click', () => console.log('Capturing: article'), true);
+      document.querySelector('article h2').addEventListener('click', () => console.log('Capturing: h2')); // By default is false
+    })();
+  </script>
+</body>
+</html>
