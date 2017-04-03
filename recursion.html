@@ -17,17 +17,35 @@
       versión de loop.
 
       Algunos problemas se resuelven con recursividad que con loops.
+      <hr>
+      <b>Recursive Tail Call Optimization</b>
+      <a href="//medium.com/@mlaythe/js-es6-recursive-tail-call-optimization-feaf2dada3f6" title="Recursive Tail Call Optimization">https://medium.com/@mlaythe/js-es6-recursive-tail-call-optimization-feaf2dada3f6</a>
     </pre>
   </div>
   <script type="text/javascript">
     // Recursividad
     // Example 01
-    function power(base, exponent) {
-      return (!exponent ? 1 : (base * power(base, exponent - 1)));
+    // function power(base, exponent) {
+    //   return (!exponent ? 1 : (base * power(base, exponent - 1))); // tail call === false
+    // }
+
+    // console.info(power(2, 3)); // 8
+    // document.write(power(2, 3)); // 8
+
+    // --> Tail call optimization
+    function pow(base, power) {
+      if (power <= 0) return 1;
+
+      return helper(base, power, base); // tail call === true
     }
 
-    console.info(power(2, 3)); // 8
-    document.write(power(2, 3)); // 8
+    function helper(base, power, num) {
+      if (power === 1) return num;
+      else return helper(base, power - 1, base * num);
+    }
+
+    console.info(pow(2, 3)); // 8
+    document.write(pow(2, 3)); // 8
 
     // Example 02
     var content = [];
