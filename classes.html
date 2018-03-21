@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Classes</title>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Classes</h1>
+    <pre>
+      <b>Classes</b> This keyword is simply a syntax sugar on top of the well established prototype system.
+      <b>A class is like a blueprint — a description of the object to be created.</b>
+
+      Una clase (Entidad abstracta) define las caracteristicas de un objeto. Contiene los métodos y/o variables.
+      Un objeto es la instancia de una clase.
+
+      * Un objeto no es una clase; pero una clase puede ser o no un objeto.
+
+      *[<b>A class is the definition, while that an object is the implementation</b>]
+    </pre>
+    <a href="//developer.mozilla.org/es/docs/Web/JavaScript/Introducci%C3%B3n_a_JavaScript_orientado_a_objetos" title="POOjs MDN">https://developer.mozilla.org/es/docs/Web/JavaScript/Introducci%C3%B3n_a_JavaScript_orientado_a_objetos</a>
+    <a href="//developer.ibm.com/node/2015/08/12/an-introduction-to-javascript-es6-classes/" title="POOjs MDN">https://developer.ibm.com/node/2015/08/12/an-introduction-to-javascript-es6-classes/</a>
+  </div>
+  <script type="text/javascript">
+
+    /* Defining Classes */
+    // Example ES5
+    function Vehicle(make, year) {
+
+      Object.defineProperty(this, 'make', {
+
+        get: function() { return make; }
+
+      });
+
+      Object.defineProperty(this, 'year', {
+
+        get: function() { return year; }
+
+      });
+
+    }
+
+    Vehicle.prototype.toString = function() {
+
+      return this.make + ' ' + this.year;
+
+    }
+
+    var vehicle = new Vehicle('Toyota Corolla', 2009);
+
+    console.log(vehicle.make); // Toyota Corolla
+    vehicle.make = 'Ford Mustang';
+    console.log(vehicle.toString()); // Toyota Corolla 2009
+
+    // Example ES6
+    class Vehicle {
+
+      constructor(make, year) {
+
+        this._make = make;
+        this._year = year;
+
+      }
+
+      get make() {
+
+        return this._make;
+
+      }
+
+      get year() {
+
+        return this._year;
+
+      }
+
+      toString() {
+
+        return `${this.make} ${this.year}`;
+
+      }
+
+    }
+
+    const vehicle = new Vehicle('Toyota Corolla', 2009);
+
+    console.log(vehicle.make); // Toyota Corolla
+    vehicle.make = 'Ford Mustang';
+    console.log(vehicle.toString()); // Toyota Corolla 2009
+
+    /* Class Declaration */
+    class Vehicle {}
+
+    /* Class Expressions */
+    const Vehicle = class {}
+
+    const Vehicle = class VehicleClass {
+
+      constructor() {
+
+        // VehicleClass is only available inside the class itself
+
+      }
+
+    }
+
+    console.log(VehicleClass); // throws an exception
+
+  </script>
+</body>
+</html>
