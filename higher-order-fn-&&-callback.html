@@ -11,6 +11,15 @@
   <div style="margin: 0 auto; text-align: center;">
     <h1>HigherOrderFunction && Callback</h1>
     <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      <code>
+        function higherOrderFunction (callback) {
+          return function () {
+            return callback()
+          }
+        }
+      </code>
+    </pre>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
       * the function you’re passing as an argument is called a callback
         function and
       * the function you’re passing the callback function to is called a
