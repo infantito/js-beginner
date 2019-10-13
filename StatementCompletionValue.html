@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statement Completion Value</title>
+</head>
+
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Statement Completion Value</h1>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      * It's what you get when evaluating a chunk of code.
+      * In practice, the only way to access a statement completion value
+      within JavaScript is through the return value of an eval call.
+      * a) When code is run in the console in Node or Chrome it's wrapped in
+           parentheses.
+
+           e.g - It's treated as an object literal
+           {a:3} in Devtool is an object; becomes ({a: 4});
+      * b) But `eval` just tries to run the code directly which is why you're
+           getting the error.
+
+           e.g - It's treated as a code block.
+           [eval => this function evaluates JavaScript code represented as a string.]
+           eval ('{a:4, b:5}');
+           SyntaxError: Unexpected token :
+      * The {} actually represents an "empty" block statement, which also
+        completes with "empty".
+      * If the completion value is "empty", "undefined" is returned.
+      * If the only statement is a non-empty throughout the executing and It's
+        the only that isn't a non-empty value, So It will be the completion value.
+
+        e.g
+        eval("1;;;;;") => Completion Value => 1
+    </pre>
+
+    <h2>How do statement lists behave?</h2>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      [spec] => http://www.ecma-international.org/ecma-262/6.0/#sec-block-runtime-semantics-evaluation
+      * This is what the spec says about the completion value of a list
+        of statements:
+    </pre>
+  </div>
+  <script type="text/javascript">
+    // The value of a StatementList is the value of the last value producing item
+    // in the StatementList. For example, the following calls to the eval
+    // function all return the value 1:
+    eval("1;;;;;") // 1
+    eval("1;{}") // empty => undefined
+    eval("1;var a;") // 1
+
+    // a)----------
+    eval("1;;;;;")
+    // consists of an expression statement (1;) and 4 empty statements (;;;;).
+    // Empty statements complete with (big surprise) empty. That means 1; is
+    // the only statement that produces a non-empty value. Therefore it’s also
+    // the last value producing item and the statement list completes with the
+    // value 1.
+
+    // b)----------
+    // In the second example from the spec it may look like it should return
+    // an empty object. However, the {} actually represents an empty block
+    // statement, which also completes with empty.
+
+    // c)----------
+    // Finally, the last example is very similar to what we saw at the top
+    // of the post.
+    "omg"; var x = 4;
+    // is a statement list with two statements. Since the completion values
+    // are "omg" and empty, the code evaluates to "omg" as the last non-empty value.
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HigherOrderFunction && Callback</title>
+</head>
+
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>HigherOrderFunction && Callback</h1>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      * the function you’re passing as an argument is called a callback
+        function and
+      * the function you’re passing the callback function to is called a
+        higher-order function.
+    </pre>
+
+    <h2>Before</h2>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+        <code>
+          function add (x, y) {
+            return x + y
+          }
+          ​
+          function addFive (x, addReference) {
+            return addReference(x, 5)
+          }
+        </code>
+      </pre>
+
+    <h2>After</h2>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      Because vocabulary is important, here’s the same code with the
+      variables re-named to match the concepts they’re demonstrating.
+    </pre>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      <code>
+        function add (x,y) {
+          return x + y
+        }
+        ​
+        function higherOrderFunction (x, callback) {
+          return callback(x, 5)
+        }
+        ​
+        higherOrderFunction(10, add)
+      </code>
+    </pre>
+  </div>
+  <script type="text/javascript">
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Function Declaration vs Function Expression</title>
+</head>
+
+<body>
+  <div style="margin: 0 auto; text-align: center;">
+    <h1>Function Declaration vs Function Expression</h1>
+    <pre style="text-align: justify; max-width: 600px; margin: 0 auto;">
+      * F. Declaration:
+        => These are load before any code is executed.
+        => It's "defined" as soon as its surrounding function or script is
+           executed (due to hoisting).
+
+           e.g: function foo() { return any; }
+      ​
+      * F. Expression:
+        => These are load only when the interpreter reaches that line of code.
+        => It's only defined when that line is "reached". (due to hoisting)
+
+        - Anonymous F.E:
+          e.g: var foo = function() { return any; }
+
+          - Named F.E:
+          e.g: var foo = function foo() { return any; }
+    </pre>
+  </div>
+  <script type="text/javascript">
+      // Example: Function Expression
+      alert(foo()); // ERROR! foo wasn't loaded yet
+      var foo = function () { return void 0; }
+
+      // Example: Function Declaration
+      alert(bar()); // Alerts 5. Declarations are loaded before any code can run.
+      function bar () { return void 0; }
+  </script>
+</body>
+
+</html>
